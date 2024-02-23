@@ -1,13 +1,32 @@
 import { useState } from 'react'
 
-
-const SquareImage = () => {
-  
+const Image = ({ image }) => {
+  return(
+    <div>
+      <img src={image} alt="Imagen de gato" />
+    </div>
+  )
 }
 
-
 function App({catImages}) {
-  const [image, setImage] = useState(0)
+  const [currentImageIndex, setImageIndex] = useState(0)
+
+  const handleMew = () =>{
+    const newIndex = currentImageIndex +1
+
+    setImageIndex(newIndex)
+
+
+    if(currentImageIndex === catImages.length -1){
+      setImageIndex(0)
+    }
+  }
+
+  const renderImages = () => {
+    return catImages.slice(0, currentImageIndex +1).map(imageObj =>(
+      <Image key={imageObj.id} image={imageObj.image}/>
+    ))
+  }
 
   return (
     <>
@@ -17,9 +36,9 @@ function App({catImages}) {
         <button>restart</button>
       </div>
       <div>
-        <img src={catImages[0].image} alt="cat" />
-        <button>mew</button>
+        <button onClick={handleMew}>MEW</button>
         <p>Click to make the magic meme happen</p>
+        {renderImages()}
       </div>
       <div>
         <p>Made with PURR by @juanexplosions</p>
