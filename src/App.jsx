@@ -1,31 +1,29 @@
 import { useState } from 'react'
 
-const Image = ({ image }) => {
-  return(
-    <div>
-      <img src={image} alt="Imagen de gato" />
-    </div>
-  )
-}
-
 function App({catImages}) {
   const [currentImageIndex, setImageIndex] = useState(0)
+  const [shownCats, setShownCats] = useState([])
+
 
   const handleMew = () =>{
-    const newIndex = currentImageIndex +1
+    const newIndex = currentImageIndex + 1
 
     setImageIndex(newIndex)
-
+    setShownCats([...shownCats, catImages[currentImageIndex]])
 
     if(currentImageIndex === catImages.length -1){
       setImageIndex(0)
     }
   }
 
-  const renderImages = () => {
-    return catImages.slice(0, currentImageIndex +1).map(imageObj =>(
-      <Image key={imageObj.id} image={imageObj.image}/>
-    ))
+  const renderImages = () => {   
+    if(shownCats.length === 0){
+      return <p>Click to make the magic meme happen</p>
+    }else{
+      return shownCats.map((cat, index) => {
+        return <img key={index} src={`/images/cat-${cat.image}.png`} alt="Imagen de gato" />
+      })  
+    }
   }
 
   return (
@@ -37,8 +35,9 @@ function App({catImages}) {
       </div>
       <div>
         <button onClick={handleMew}>MEW</button>
-        <p>Click to make the magic meme happen</p>
-        {renderImages()}
+      </div>
+      <div>
+      {renderImages()}
       </div>
       <div>
         <p>Made with PURR by @juanexplosions</p>
