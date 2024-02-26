@@ -1,27 +1,31 @@
 import { useState } from 'react'
 
 function App({catImages}) {
-  const [currentImageIndex, setImageIndex] = useState(0)
   const [shownCats, setShownCats] = useState([])
-
+  const [prevIndex, setPrevIndex] = useState(0)
 
   const handleMew = () =>{
-    const newIndex = currentImageIndex + 1
+    let newIndex = 0
 
-    setImageIndex(newIndex)
-    setShownCats([...shownCats, catImages[currentImageIndex]])
-
-    if(currentImageIndex === catImages.length -1){
-      setImageIndex(0)
+    if(shownCats.length === 0){
+      newIndex = Math.floor(Math.random() * catImages.length)
+    }else{
+      do{
+        newIndex = Math.floor(Math.random() * catImages.length)
+      }while(newIndex === prevIndex)
     }
+
+    setPrevIndex(newIndex)   
+    setShownCats([...shownCats, catImages[newIndex]])
+
   }
 
-  const renderImages = () => {   
+  const renderImages = () => { 
     if(shownCats.length === 0){
       return <p>Click to make the magic meme happen</p>
     }else{
       return shownCats.map((cat, index) => {
-        return <img key={index} src={`/images/cat-${cat.image}.png`} alt="Imagen de gato" />
+        return <img className="catImage" key={index} src={`/images/cat-${cat.image}.png`} alt="Imagen de gato" />
       })  
     }
   }
@@ -40,7 +44,7 @@ function App({catImages}) {
       {renderImages()}
       </div>
       <div>
-        <p>Made with PURR by @juanexplosions</p>
+        <p>Made with <b>PURR</b> by @juanexplosions</p>
       </div>
     </>
   )
