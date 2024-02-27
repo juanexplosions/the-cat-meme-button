@@ -3,15 +3,93 @@
 body {
     font-family: "Rubik", sans-serif;
     font-optical-sizing: auto;
+    background-color: #FFFFF2; 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
+
+
 
 button {
     font-family: "Rubik", sans-serif;
     font-weight: 900;
     font-size: 36px;
-    background-color: #F4D738;
     border-radius: 15px;
     border: 3px solid;
     box-shadow: 0px 5px 0px #000000;
     cursor: pointer;
 }
+
+button.primary{
+  width: 145px;
+  height: 75px;
+  background-color: #F4D738;
+  position: absolute;
+}
+
+button.secondary{
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background-color: #FF6B6B;
+}
+
+.refresh-button {
+  max-width: 100%; 
+  max-height: 100%;
+}
+
+a{
+  color: #000000;
+}
+
+.container{
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.cat-image{
+  width: 100px;
+  height: 100px;
+}
+
+.cats-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  justify-content: center;
+  place-items: center;
+
+}
+
+click-to{
+
+}
+
+.header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 150px;
+}
+
+.buttons{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  column-gap: 5px;
+  align-items: center;
+  padding-right: 55px;
+}
+
+.footer{
+  grid-row: 3;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  font-weight: 300;
+  font-size: 20px;
+  height: 85px;
+}
+
