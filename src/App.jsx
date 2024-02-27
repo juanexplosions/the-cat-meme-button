@@ -55,7 +55,7 @@ function App({catImages}) {
       <div className='cats-grid'>
         <div className='cat-button'>
           <button className='primary' onClick={handleMew}>MEW</button>
-          {showClickText && <p className='click-to'>Click to make the magic meme happen</p>}
+          <p className='click-to' style={{ visibility: showClickText ? 'visible' : 'hidden' }}>Click to make the magic meme happen</p>
         </div>
         
         {renderImages()}
