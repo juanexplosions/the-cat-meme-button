@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Modal from './components/modal/modal' 
 
 function App({catImages}) {
   const [shownCats, setShownCats] = useState([])
@@ -20,6 +21,10 @@ function App({catImages}) {
 
   }
 
+  const handleRefresh = () => {
+    setShownCats([])
+  }
+
   const renderImages = () => { 
     if(shownCats.length === 0){
       return <p className='click-to'>Click to make the magic meme happen</p>
@@ -33,10 +38,10 @@ function App({catImages}) {
   return (
     <div className='container'>
       <div className='header'>
-        <p>logo</p>
+        <img className='logo' src="/images/tcmb-logo.png"/>
         <div className='buttons'>
-          <button className='secondary'>?</button>
-          <button className='secondary'>
+          <Modal />
+          <button onClick={handleRefresh} className='secondary'>
             <img className='refresh-button' src='/images/refresh-button.svg' alt='Recargar' />
           </button>
         </div>

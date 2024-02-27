@@ -21,6 +21,15 @@ button {
     cursor: pointer;
 }
 
+.logo{
+  width: 401px;
+  height: 113px;
+  display: grid;
+  place-items: center;
+  margin-left: 40px;
+  margin: 20px;
+}
+
 button.primary{
   width: 145px;
   height: 75px;
