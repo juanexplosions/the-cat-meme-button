@@ -4,6 +4,7 @@ import Modal from './components/modal/modal'
 function App({catImages}) {
   const [shownCats, setShownCats] = useState([])
   const [prevIndex, setPrevIndex] = useState(0)
+  const [showClickText, setShowClickText] = useState(true)
 
   const handleMew = () =>{
     let newIndex = 0
@@ -18,16 +19,21 @@ function App({catImages}) {
 
     setPrevIndex(newIndex)   
     setShownCats([...shownCats, catImages[newIndex]])
+    setShowClickText(false)
 
   }
 
   const handleRefresh = () => {
-    setShownCats([])
+    const auxArray = []
+    setShownCats(auxArray)
+
+    setShowClickText(true)
+    console.log(showClickText)
   }
 
   const renderImages = () => { 
     if(shownCats.length === 0){
-      return <p className='click-to'>Click to make the magic meme happen</p>
+      console.log('No hay gatos')
     }else{
       return shownCats.map((cat, index) => {
         return <img className="cat-image" key={index} src={`/images/cat-${cat.image}.png`} alt="Imagen de gato" />
@@ -47,7 +53,11 @@ function App({catImages}) {
         </div>
       </div>
       <div className='cats-grid'>
-        <button className='primary' onClick={handleMew}>MEW</button>
+        <div className='cat-button'>
+          <button className='primary' onClick={handleMew}>MEW</button>
+          {showClickText && <p className='click-to'>Click to make the magic meme happen</p>}
+        </div>
+        
         {renderImages()}
       </div>
       <div className='footer'>
