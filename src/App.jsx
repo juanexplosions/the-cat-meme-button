@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Modal from './components/modal/modal' 
 
 function App({catImages}) {
   const [shownCats, setShownCats] = useState([])
   const [prevIndex, setPrevIndex] = useState(0)
   const [showClickText, setShowClickText] = useState(true)
+  const [disableButton, setDisableButton] = useState(false);
+  const [buttonText, setButtonText] = useState('MEW')
+  const [alto, setAlto] = useState(0)
 
   const handleMew = () =>{
     let newIndex = 0
@@ -17,9 +20,16 @@ function App({catImages}) {
       }while(newIndex === prevIndex)
     }
 
-    setPrevIndex(newIndex)   
-    setShownCats([...shownCats, catImages[newIndex]])
-    setShowClickText(false)
+    
+    if (alto > 841){
+      setShownCats(shownCats.slice(0,-1))
+      setDisableButton(true)
+      setButtonText('OUT OF CATS')
+    }else{
+      setPrevIndex(newIndex)   
+      setShownCats([...shownCats, catImages[newIndex]])
+      setShowClickText(false)
+    }
 
   }
 
@@ -29,6 +39,9 @@ function App({catImages}) {
 
     setShowClickText(true)
     console.log(showClickText)
+
+    setDisableButton(false)
+    setButtonText('MEW')
   }
 
   const renderImages = () => { 
@@ -41,6 +54,15 @@ function App({catImages}) {
     }
   }
 
+  useEffect(() => {
+    const grid = document.getElementById('cats-grid');
+
+    const altoGrid = grid.clientHeight;
+    console.log(altoGrid);  
+    setAlto(altoGrid);
+
+  }, [shownCats]);
+
   return (
     <div className='container'>
       <div className='header'>
@@ -52,9 +74,9 @@ function App({catImages}) {
           </button>
         </div>
       </div>
-      <div className='cats-grid'>
-        <div className='cat-button'>
-          <button className='primary' onClick={handleMew}>MEW</button>
+      <div className='cats-grid' id='cats-grid'>
+        <div className='cat-button' id='cat-button'>
+          <button className='primary' onClick={handleMew} disabled={disableButton}> {buttonText} </button>
           <p className='click-to' style={{ visibility: showClickText ? 'visible' : 'hidden' }}>Click to make the magic meme happen</p>
         </div>
         

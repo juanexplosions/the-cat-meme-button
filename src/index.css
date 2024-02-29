@@ -95,6 +95,13 @@ a {
   padding-right: 55px;
 }
 
+button:disabled{
+  background-color: #BABABA;
+  color: #000000;
+  cursor: not-allowed;
+  width: 300px;
+}
+
 .footer {
   grid-row: 3;
   display: grid;
