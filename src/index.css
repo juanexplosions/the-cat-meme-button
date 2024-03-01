@@ -52,6 +52,13 @@ button.secondary {
   background-color: #ff6b6b;
 }
 
+button:disabled{
+  background-color: #BABABA;
+  color: #000000;
+  cursor: not-allowed;
+  width: 300px;
+}
+
 .refresh-button {
   max-width: 100%;
   max-height: 100%;
@@ -78,7 +85,9 @@ a {
   grid-template-rows: repeat(auto-fill, 100px);
   justify-content: center;
   place-items: center;
+  max-height: calc(100vh - 235px);
 }
+
 
 .header {
   display: grid;
@@ -95,19 +104,79 @@ a {
   padding-right: 55px;
 }
 
-button:disabled{
-  background-color: #BABABA;
-  color: #000000;
-  cursor: not-allowed;
-  width: 300px;
-}
+
 
 .footer {
-  grid-row: 3;
-  display: grid;
-  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fffff2;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  font-weight: 300;
-  font-size: 20px;
   height: 85px;
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .header {
+    grid-template-columns: auto auto;
+    height: auto;
+  }
+
+  .footer {
+    position: static;
+    margin-top: 20px;
+  }
+
+  .buttons {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .cat-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  button.primary {
+    width: 80px;
+    height: 45px;
+    font-size: 20px;
+    background-color: #f4d738;
+  }
+
+  button.secondary {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #ff6b6b;
+    font-size: 20px;
+    border-radius: 11px;
+  }
+
+  button:disabled{
+    background-color: #BABABA;
+    color: #000000;
+    cursor: not-allowed;
+    width: 180px;
+  }
+  
+  button {
+    border-radius: 13px;
+    border: 3px solid;
+    box-shadow: 0px 3px 0px #000000;
+    cursor: pointer;
+  }
+
+  .logo{
+    width: 97px;
+    height: 131px;
+    margin-left: 60px;
+  }
+}
+
