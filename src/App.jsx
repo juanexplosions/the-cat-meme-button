@@ -4,10 +4,19 @@ import Modal from './components/modal/modal'
 function App({catImages}) {
   const [shownCats, setShownCats] = useState([])
   const [prevIndex, setPrevIndex] = useState(0)
+  const [maxCats, setMaxCats] = useState(0)
   const [showClickText, setShowClickText] = useState(true)
-  const [disableButton, setDisableButton] = useState(false);
-  const [buttonText, setButtonText] = useState('MEW')
-  const [alto, setAlto] = useState(0)
+
+
+  useEffect(() => {
+    const grid = document.getElementById('cats-grid');
+
+    const altoGrid = grid.clientHeight;
+    const gridWidth = grid.clientWidth;
+
+    const maxCatsAux = Math.floor(altoGrid / 100) * Math.floor(gridWidth / 100);
+    setMaxCats(maxCatsAux);
+  }, []);
 
   const handleMew = () =>{
     let newIndex = 0
@@ -20,16 +29,9 @@ function App({catImages}) {
       }while(newIndex === prevIndex)
     }
 
-    
-    if (alto > 841){
-      setShownCats(shownCats.slice(0,-1))
-      setDisableButton(true)
-      setButtonText('OUT OF CATS')
-    }else{
-      setPrevIndex(newIndex)   
+      setPrevIndex(newIndex)
       setShownCats([...shownCats, catImages[newIndex]])
       setShowClickText(false)
-    }
 
   }
 
@@ -39,9 +41,6 @@ function App({catImages}) {
 
     setShowClickText(true)
     console.log(showClickText)
-
-    setDisableButton(false)
-    setButtonText('MEW')
   }
 
   const renderImages = () => { 
@@ -54,14 +53,10 @@ function App({catImages}) {
     }
   }
 
-  useEffect(() => {
-    const grid = document.getElementById('cats-grid');
 
-    const altoGrid = grid.clientHeight;
-    console.log(altoGrid);  
-    setAlto(altoGrid);
-
-  }, [shownCats]);
+  const isGridFull = maxCats === shownCats.length;
+  const disableButton = isGridFull;
+  const buttonText = isGridFull ? 'OUT OF CATS' : 'MEW';
 
   return (
     <div className='container'>
