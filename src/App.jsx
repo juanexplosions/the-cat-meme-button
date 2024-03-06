@@ -17,7 +17,7 @@ function App({catImages}) {
   console.log(size)
 
   const isMobile = size.width <= 600
-  const logo = isMobile ? '/images/tcmb-logo-mobile.png' : '/images/tcmb-logo.png'  
+  const sizeImageCat = isMobile ? 75 : 100
 
   useEffect(() => {
     const grid = document.getElementById('cats-grid');
@@ -25,7 +25,7 @@ function App({catImages}) {
     const altoGrid = grid.clientHeight;
     const gridWidth = grid.clientWidth;
 
-    const maxCatsAux = Math.floor(altoGrid / 100) * Math.floor(gridWidth / 100);
+    const maxCatsAux = Math.floor(altoGrid / sizeImageCat) * Math.floor(gridWidth / sizeImageCat);
     setMaxCats(maxCatsAux);
 
     console.log(shownCats.length, maxCatsAux, shownCats.length > maxCatsAux)
@@ -35,19 +35,6 @@ function App({catImages}) {
     }
 
   }, [size])
-
-
-  useEffect(() => {
-    const grid = document.getElementById('cats-grid');
-
-    const altoGrid = grid.clientHeight;
-    const gridWidth = grid.clientWidth;
-
-    const maxCatsAux = Math.floor(altoGrid / 100) * Math.floor(gridWidth / 100);
-    setMaxCats(maxCatsAux);
-  }, []);
-
-  useEffect
 
   const handleMew = () =>{
     let newIndex = 0
@@ -88,7 +75,7 @@ function App({catImages}) {
   return (
     <div className='container'>
       <div className='header'>
-        <img className='logo' src={logo}/>
+        <img className='logo' src='/images/tcmb-logo.png'/>
         <div className='buttons'>
           <Modal />
           <button onClick={handleRefresh} className='secondary'>
@@ -99,7 +86,7 @@ function App({catImages}) {
       <div className='cats-grid' id='cats-grid'>
         <div className='cat-button' id='cat-button'>
           <button className='primary' onClick={handleMew} disabled={disableButton}> {buttonText} </button>
-          <p className='click-to' style={{ visibility: showClickText ? 'visible' : 'hidden' }}>Click to make the magic meme happen</p>
+          <p className='click-to' style={{ visibility: showClickText ? 'visible' : 'hidden' }}><b>Click</b> to make the <del>magic</del> meme happen</p>
         </div>
         {renderImages()}
       </div>

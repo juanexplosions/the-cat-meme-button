@@ -29,13 +29,17 @@ button {
 }
 
 .cat-button{
-  display: grid;
   position: absolute;
-  place-items: center;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  display: grid;
+  justify-items: center;
 }
 
 .click-to{
   text-align: center;
+
 }
 
 button.primary {
@@ -84,7 +88,7 @@ a {
   grid-template-columns: repeat(auto-fill, 100px);
   grid-template-rows: repeat(auto-fill, 100px);
   justify-content: center;
-  place-items: center;
+  align-content: center;
   max-height: calc(100vh - 235px);
 }
 
@@ -108,7 +112,7 @@ a {
 
 .footer {
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
   width: 100%;
   background-color: #fffff2;
   display: flex;
@@ -124,39 +128,68 @@ a {
 
   .header {
     grid-template-columns: auto auto;
-    height: auto;
+    height: 100px;
   }
 
   .footer {
-    position: static;
-    margin-top: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: #fffff2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85px;
   }
 
   .buttons {
     justify-content: center;
     padding-right: 0;
+    margin-right: 20px;
   }
 
   .cat-image {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    grid-template-rows: repeat(auto-fill, 75px);
+    justify-content: center;
+    align-content: center;
+    max-height: calc(100vh - 250px);
+    padding: 0px;
+    margin: 0px;
+    position: relative;
   }
 
   button.primary {
-    width: 80px;
-    height: 45px;
-    font-size: 20px;
+    width: 100px;
+    height: 55px;
+    font-size: 25px;
     background-color: #f4d738;
+    border-color: #000000;
+    color: #000000;
+    text-align: center;
+    padding: 0;
   }
 
   button.secondary {
     display: grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     background-color: #ff6b6b;
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 11px;
+    border-color: #000000;
+    padding: 0;
+    color: #000000;
+    padding: 0;
   }
 
   button:disabled{
@@ -165,7 +198,12 @@ a {
     cursor: not-allowed;
     width: 180px;
   }
-  
+
+  .refresh-button {
+    max-width: 75%;
+    max-height: 75%;
+  }
+
   button {
     border-radius: 13px;
     border: 3px solid;
@@ -174,9 +212,8 @@ a {
   }
 
   .logo{
-    width: 97px;
-    height: 131px;
-    margin-left: 60px;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
   }
 }
-
