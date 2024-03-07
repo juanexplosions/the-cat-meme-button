@@ -46,6 +46,10 @@ button.primary {
   width: 145px;
   height: 75px;
   background-color: #f4d738;
+  border-color: #000000;
+  color: #000000;
+  text-align: center;
+  padding: 0;
 }
 
 button.secondary {
@@ -54,6 +58,12 @@ button.secondary {
   width: 52px;
   height: 52px;
   background-color: #ff6b6b;
+  border-color: #000000;
+  color: #000000;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 button:disabled{
@@ -74,8 +84,9 @@ a {
 
 .container {
   display: grid;
+  grid-template-rows: auto 1fr 85px;
+  align-items: center;
   min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
 }
 
 .cat-image {
@@ -90,6 +101,7 @@ a {
   justify-content: center;
   align-content: center;
   max-height: calc(100vh - 235px);
+  margin-top: 0px;
 }
 
 
@@ -112,19 +124,17 @@ a {
 
 .footer {
   position: fixed;
-  bottom: 15px;
+  bottom: 0px;
   width: 100%;
   background-color: #fffff2;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   height: 85px;
+  margin-top: auto;
 }
 
 @media only screen and (max-width: 600px) {
-  .container {
-    grid-template-rows: auto auto 100px;
-  }
 
   .header {
     grid-template-columns: auto auto;
@@ -132,14 +142,9 @@ a {
   }
 
   .footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
-    background-color: #fffff2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85px;
+    height: 75px;
+    bottom: 0;
+    position: relative;
   }
 
   .buttons {
@@ -159,11 +164,8 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
     grid-template-rows: repeat(auto-fill, 75px);
-    justify-content: center;
-    align-content: center;
-    max-height: calc(100vh - 275px);
-    padding: 0px;
-    margin: 0px;
+    /* max-height: calc(100vh - 275px); */
+    position: sticky;
   }
 
   button.primary {
@@ -213,17 +215,15 @@ a {
   .logo{
     width: 80%;
     height: auto;
-    margin: 30px auto;
+    margin: 10px auto;
   }
 }
 
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .container {
-    grid-template-rows: 100px auto 100px;
-  }
-
-  .header{
-    position: relative;
+    grid-template-rows: 100px auto 75px;
+    min-height: -webkit-fill-available;
   }
 }
+
