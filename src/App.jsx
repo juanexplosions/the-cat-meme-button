@@ -26,6 +26,7 @@ function App({catImages}) {
     const gridWidth = grid.clientWidth;
 
     const maxCatsAux = Math.floor(altoGrid / sizeImageCat) * Math.floor(gridWidth / sizeImageCat);
+    console.log(maxCatsAux)
     setMaxCats(maxCatsAux);
 
     console.log(shownCats.length, maxCatsAux, shownCats.length > maxCatsAux)
