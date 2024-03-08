@@ -22,10 +22,10 @@ function App({catImages}) {
 
   useEffect(() => {
     setTimeout(() => {
-    
-    
+
+
     const grid = document.getElementById('cats-grid');
-    
+
     const altoGrid = grid.clientHeight;
     const gridWidth = grid.clientWidth;
 
@@ -43,7 +43,7 @@ function App({catImages}) {
       const auxArray = shownCats.slice(0, maxCatsAux)
       setShownCats(auxArray)
     }
-  }, "1");
+  }, "20");
 
   }, [size])
 
