@@ -43,7 +43,7 @@ function App({catImages}) {
       const auxArray = shownCats.slice(0, maxCatsAux)
       setShownCats(auxArray)
     }
-  }, "20");
+  }, "100");
 
   }, [size])
 
