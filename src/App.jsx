@@ -10,23 +10,32 @@ function App({catImages}) {
   const [showClickText, setShowClickText] = useState(true)
 
   const isGridFull = maxCats === shownCats.length;
+  console.log("🚀 ~ App ~ isGridFull:", isGridFull)
+
   const disableButton = isGridFull;
   const buttonText = isGridFull ? 'OUT OF CATS' : 'MEW';
 
   const size = useWindowSize();
-  console.log(size)
 
   const isMobile = size.width <= 600
   const sizeImageCat = isMobile ? 75 : 100
 
   useEffect(() => {
+    setTimeout(() => {
+    
+    
     const grid = document.getElementById('cats-grid');
-
+    
     const altoGrid = grid.clientHeight;
     const gridWidth = grid.clientWidth;
 
     const maxCatsAux = Math.floor(altoGrid / sizeImageCat) * Math.floor(gridWidth / sizeImageCat);
-    console.log(maxCatsAux)
+    console.log("🚀 ~ useEffect ~ gridWidth:", gridWidth)
+    console.log("🚀 ~ useEffect ~ altoGrid:", altoGrid)
+    console.log("🚀 ~ useEffect ~ sizeImageCat:", sizeImageCat)
+    console.log("🚀 ~ useEffect ~ maxCatsAux:", maxCatsAux)
+    console.log("test1",Math.floor(altoGrid / sizeImageCat))
+    console.log("test2",Math.floor(gridWidth / sizeImageCat))
     setMaxCats(maxCatsAux);
 
     console.log(shownCats.length, maxCatsAux, shownCats.length > maxCatsAux)
@@ -34,6 +43,7 @@ function App({catImages}) {
       const auxArray = shownCats.slice(0, maxCatsAux)
       setShownCats(auxArray)
     }
+  }, "1");
 
   }, [size])
 
@@ -65,7 +75,7 @@ function App({catImages}) {
   const renderImages = () => {
 
     if(shownCats.length === 0){
-      console.log('No hay gatos')
+      
     }else{
       return shownCats.map((cat, index) => {
         return <img className="cat-image" key={index} src={`/images/cat-${cat.image}.png`} alt="Imagen de gato" />

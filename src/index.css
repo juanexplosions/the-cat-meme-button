@@ -164,7 +164,6 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
     grid-template-rows: repeat(auto-fill, 75px);
-    /* max-height: calc(100vh - 275px); */
     position: sticky;
   }
 
@@ -221,9 +220,11 @@ a {
 
 
 @media only screen and (max-width: 450px) {
+
   .container {
     grid-template-rows: 100px auto 75px;
     min-height: -webkit-fill-available;
   }
+
 }
 
